@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auxilium</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fef3f2 0%, #e0d4f9 50%, #d1d9f0 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .header-button {
+      transition: all 0.3s ease;
+    }
+
+    .header-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .scroll-options {
+      scrollbar-width: thin;
+      scrollbar-color: #c4b5fd #f3f4f6;
+    }
+
+    .scroll-options::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-options::-webkit-scrollbar-thumb {
+      background: #c4b5fd;
+      border-radius: 8px;
+    }
+
+    .scroll-item {
+      transition: all 0.3s ease;
+    }
+
+    .scroll-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-container input {
+      transition: all 0.3s ease;
+    }
+
+    .search-container input:focus {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .listing-card {
+      transition: all 0.3s ease;
+    }
+
+    .listing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="flex flex-col">
+  <header class="flex justify-between items-center p-6 mx-4 mt-4 rounded-2xl shadow-lg">
+    <div class="text-3xl font-bold text-gray-800">Auxilium</div>
+    <div class="flex space-x-4">
+      <a href="signup.html" class="header-button bg-white text-gray-800 px-6 py-2 rounded-full shadow-md hover:bg-purple-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400" aria-label="Join Us">Join Us</a>
+      <a href="account.html" class="header-button bg-white text-gray-800 px-6 py-2 rounded-full shadow-md hover:bg-purple-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400" aria-label="Account">Account</a>
+    </div>
+  </header>
+
+  <div class="scroll-options flex overflow-x-auto space-x-4 mx-4 my-8 pb-2" role="tablist">
+    <a href="index.html" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab" aria-selected="true">Popular</a>
+    <a href="service-details.html?service=tutoring" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Tutoring</a>
+    <a href="service-details.html?service=petsitting" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Pet Sitting</a>
+    <a href="service-details.html?service=cleaning" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Cleaning</a>
+    <a href="service-details.html?service=techsupport" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Tech Support</a>
+    <a href="service-details.html?service=fitness" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Fitness</a>
+    <a href="service-details.html?service=mentalhealth" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Mental Health</a>
+    <a href="service-details.html?service=childcare" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Childcare</a>
+    <a href="service-details.html?service=homerepair" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Home Repair</a>
+    <a href="service-details.html?service=beauty" class="scroll-item flex-shrink-0 px-4 py-2 bg-white rounded-full shadow-md font-semibold text-gray-700 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400" role="tab">Beauty</a>
+  </div>
+
+  <div class="search-container flex justify-center mx-4 my-10">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="Search for services or professionals..."
+      class="w-full max-w-2xl p-4 text-lg bg-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+      aria-label="Search services"
+      oninput="filterListings()"
+    />
+  </div>
+
+  <section class="listings grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-4 mb-10">
+    <a href="service-details.html?service=tutoring" class="listing-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fade-in" data-title="Academic Tutoring">
+      <img data-service="tutoring" src="https://via.placeholder.com/300x200?text=Tutoring" alt="Tutoring Service" class="w-full h-48 object-cover" />
+      <div class="p-5">
+        <div class="listing-title text-xl font-semibold text-gray-800">Academic Tutoring</div>
+        <div class="listing-price text-gray-600">From $30/hr</div>
+        <div class="listing-description text-gray-500 text-sm mt-2">Experienced tutors for all subjects and grade levels.</div>
+      </div>
+    </a>
+    <a href="service-details.html?service=petsitting" class="listing-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fade-in" data-title="Pet Sitting">
+      <img data-service="petsitting" src="https://via.placeholder.com/300x200?text=Pet+Sitting" alt="Pet Sitting" class="w-full h-48 object-cover" />
+      <div class="p-5">
+        <div class="listing-title text-xl font-semibold text-gray-800">Pet Sitting</div>
+        <div class="listing-price text-gray-600">From $20/day</div>
+        <div class="listing-description text-gray-500 text-sm mt-2">Trusted caregivers for your furry friends while you're away.</div>
+      </div>
+    </a>
+    <a href="service-details.html?service=cleaning" class="listing-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fade-in" data-title="Home Cleaning">
+      <img data-service="cleaning" src="https://via.placeholder.com/300x200?text=Cleaning" alt="Home Cleaning" class="w-full h-48 object-cover" />
+      <div class="p-5">
+        <div class="listing-title text-xl font-semibold text-gray-800">Home Cleaning</div>
+        <div class="listing-price text-gray-600">From $50/visit</div>
+        <div class="listing-description text-gray-500 text-sm mt-2">Professional cleaning to keep your space spotless and fresh.</div>
+      </div>
+    </a>
+    <a href="service-details.html?service=techsupport" class="listing-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fade-in" data-title="Tech Support">
+      <img data-service="techsupport" src="https://via.placeholder.com/300x200?text=Tech+Support" alt="Tech Support" class="w-full h-48 object-cover" />
+      <div class="p-5">
+        <div class="listing-title text-xl font-semibold text-gray-800">Tech Support</div>
+        <div class="listing-price text-gray-600">From $40/hr</div>
+        <div class="listing-description text-gray-500 text-sm mt-2">Get help with setup, troubleshooting, and digital tasks.</div>
+      </div>
+    </a>
+    <a href="service-details.html?service=fitness" class="listing-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fade-in" data-title="Personal Training">
+      <img data-service="fitness" src="https://via.placeholder.com/300x200?text=Fitness" alt="Personal Training" class="w-full h-48 object-cover" />
+      <div class="p-5">
+        <div class="listing-title text-xl font-semibold text-gray-800">Personal Training</div>
+        <div class="listing-price text-gray-600">From $45/session</div>
+        <div class="listing-description text-gray-500 text-sm mt-2">One-on-one sessions to achieve your fitness goals.</div>
+      </div>
+    </a>
+    <a href="service-details.html?service=therapy" class="listing-card bg-white rounded-2xl overflow-hidden shadow-lg animate-fade-in" data-title="Therapy & Counseling">
+      <img data-service="therapy" src="https://via.placeholder.com/300x200?text=Therapy" alt="Therapy" class="w-full h-48 object-cover" />
+      <div class="p-5">
+        <div class="listing-title text-xl font-semibold text-gray-800">Therapy & Counseling</div>
+        <div class="listing-price text-gray-600">From $70/session</div>
+        <div class="listing-description text-gray-500 text-sm mt-2">Confidential mental health support from licensed professionals.</div>
+      </div>
+    </a>
+  </section>
+
+  <footer class="mt-auto mx-4 mb-4 p-6 text-center rounded-2xl shadow-lg">
+    <p class="text-gray-600 text-sm">
+      © 2025 Auxilium. All rights reserved. | Designed with passion and precision. | 
+      <a href="privacy.html" class="text-purple-600 hover:underline">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    // Load images from localStorage for each service
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = document.querySelectorAll('.listing-card img[data-service]');
+      images.forEach(img => {
+        const service = img.getAttribute('data-service');
+        const savedImage = localStorage.getItem(`service-${service}-image`);
+        if (savedImage) {
+          img.src = savedImage; // Use base64 image from localStorage
+        }
+      });
+    });
+
+    // Filter listings based on search input
+    function filterListings() {
+      const input = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.listing-card');
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        card.style.display = title.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
