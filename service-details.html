@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Details - Auxilium</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #fef3f2 0%, #e0d4f9 50%, #d1d9f0 100%);
+      min-height: 100vh;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+    .header-button {
+      transition: all 0.3s ease;
+    }
+    .header-button:hover {
+      transform: translateY(-2px);
+    }
+    .form-container, .preview-container {
+      transition: all 0.3s ease;
+    }
+    .form-container:hover, .preview-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    footer {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="flex flex-col">
+  <header class="flex justify-between items-center p-6 mx-4 mt-4 rounded-2xl shadow-lg">
+    <a href="index.html" class="text-3xl font-bold text-gray-800">Auxilium</a>
+    <div class="flex space-x-4">
+      <a href="signup.html" class="header-button bg-white text-gray-800 px-6 py-2 rounded-full shadow-md hover:bg-purple-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400" aria-label="Join Us">Join Us</a>
+      <a href="account.html" class="header-button bg-white text-gray-800 px-6 py-2 rounded-full shadow-md hover:bg-purple-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400" aria-label="Account">Account</a>
+    </div>
+  </header>
+
+  <main class="flex-1 mx-4 my-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Form Section -->
+    <div class="form-container bg-white p-8 rounded-2xl shadow-lg animate-fade-in">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Customize Service Details</h2>
+      <form id="service-form" onsubmit="saveService(event)">
+        <div>
+          <label for="service-title" class="block text-sm font-medium text-gray-700">Service Title</label>
+          <input
+            type="text"
+            id="service-title"
+            required
+            class="w-full p-3 mt-1 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+            aria-required="true"
+          />
+        </div>
+        <div class="mt-4">
+          <label for="service-price" class="block text-sm font-medium text-gray-700">Price</label>
+          <input
+            type="text"
+            id="service-price"
+            placeholder="e.g., $30/hr"
+            class="w-full p-3 mt-1 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
+        </div>
+        <div class="mt-4">
+          <label for="service-description" class="block text-sm font-medium text-gray-700">Description</label>
+          <textarea
+            id="service-description"
+            rows="4"
+            class="w-full p-3 mt-1 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+          ></textarea>
+        </div>
+        <div class="mt-4">
+          <label for="service-availability" class="block text-sm font-medium text-gray-700">Availability</label>
+          <input
+            type="text"
+            id="service-availability"
+            placeholder="e.g., Weekdays 9 AM - 5 PM"
+            class="w-full p-3 mt-1 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
+        </div>
+        <div class="mt-4">
+          <label for="service-contact" class="block text-sm font-medium text-gray-700">Contact Information</label>
+          <input
+            type="text"
+            id="service-contact"
+            placeholder="e.g., email@example.com"
+            class="w-full p-3 mt-1 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
+        </div>
+        <div class="mt-4">
+          <label for="service-image" class="block text-sm font-medium text-gray-700">Service Image</label>
+          <input
+            type="file"
+            id="service-image"
+            accept="image/*"
+            class="w-full p-3 mt-1 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
+        </div>
+        <button
+          type="submit"
+          class="mt-6 w-full bg-purple-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400"
+        >
+          Save Details
+        </button>
+      </form>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="preview-container bg-white p-8 rounded-2xl shadow-lg animate-fade-in">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Service Preview</h2>
+      <img
+        id="preview-image"
+        src="https://via.placeholder.com/300x200?text=Service+Preview"
+        alt="Service Preview"
+        class="w-full h-48 object-cover rounded-lg mb-4"
+      />
+      <h3 id="preview-title" class="text-xl font-semibold text-gray-800">Service Title</h3>
+      <p id="preview-price" class="text-gray-600 mt-2">Price: Not specified</p>
+      <p id="preview-description" class="text-gray-500 mt-2">Description: Not specified</p>
+      <p id="preview-availability" class="text-gray-500 mt-2">Availability: Not specified</p>
+      <p id="preview-contact" class="text-gray-500 mt-2">Contact: Not specified</p>
+    </div>
+  </main>
+
+  <footer class="mt-auto mx-4 mb-4 p-6 text-center rounded-2xl shadow-lg">
+    <p class="text-gray-600 text-sm">
+      © 2025 Auxilium. All rights reserved. | Designed with passion and precision. | 
+      <a href="privacy.html" class="text-purple-600 hover:underline">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    // Load service name from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceName = urlParams.get('service') || 'Service';
+    document.getElementById('service-title').value = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
+
+    // Load saved data from localStorage
+    function loadServiceData() {
+      const savedData = JSON.parse(localStorage.getItem(`service-${serviceName}`)) || {};
+      if (savedData.title) {
+        document.getElementById('service-title').value = savedData.title;
+        document.getElementById('preview-title').textContent = savedData.title;
+      }
+      if (savedData.price) {
+        document.getElementById('service-price').value = savedData.price;
+        document.getElementById('preview-price').textContent = `Price: ${savedData.price}`;
+      }
+      if (savedData.description) {
+        document.getElementById('service-description').value = savedData.description;
+        document.getElementById('preview-description').textContent = savedData.description;
+      }
+      if (savedData.availability) {
+        document.getElementById('service-availability').value = savedData.availability;
+        document.getElementById('preview-availability').textContent = `Availability: ${savedData.availability}`;
+      }
+      if (savedData.contact) {
+        document.getElementById('service-contact').value = savedData.contact;
+        document.getElementById('preview-contact').textContent = `Contact: ${savedData.contact}`;
+      }
+      const savedImage = localStorage.getItem(`service-${serviceName}-image`);
+      if (savedImage) {
+        document.getElementById('preview-image').src = savedImage;
+      }
+    }
+
+    // Save service details and image to localStorage
+    function saveService(event) {
+      event.preventDefault();
+      const serviceData = {
+        title: document.getElementById('service-title').value,
+        price: document.getElementById('service-price').value,
+        description: document.getElementById('service-description').value,
+        availability: document.getElementById('service-availability').value,
+        contact: document.getElementById('service-contact').value,
+      };
+
+      // Save text data
+      localStorage.setItem(`service-${serviceName}`, JSON.stringify(serviceData));
+
+      // Handle image upload
+      const imageInput = document.getElementById('service-image');
+      if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const base64Image = e.target.result;
+          localStorage.setItem(`service-${serviceName}-image`, base64Image);
+          document.getElementById('preview-image').src = base64Image;
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+      }
+
+      // Update preview
+      document.getElementById('preview-title').textContent = serviceData.title;
+      document.getElementById('preview-price').textContent = serviceData.price
+        ? `Price: ${serviceData.price}`
+        : 'Price: Not specified';
+      document.getElementById('preview-description').textContent = serviceData.description
+        ? serviceData.description
+        : 'Description: Not specified';
+      document.getElementById('preview-availability').textContent = serviceData.availability
+        ? `Availability: ${serviceData.availability}`
+        : 'Availability: Not specified';
+      document.getElementById('preview-contact').textContent = serviceData.contact
+        ? `Contact: ${serviceData.contact}`
+        : 'Contact: Not specified';
+
+      alert('Service details saved!');
+    }
+
+    // Initialize page
+    loadServiceData();
+  </script>
+</body>
+</html>
